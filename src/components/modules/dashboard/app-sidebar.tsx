@@ -1,0 +1,164 @@
+"use client";
+
+import { Bot, Settings, SquareTerminal } from "lucide-react";
+import * as React from "react";
+
+import Logo from "@/assets/images/logo/Logo";
+import { Button } from "@/components/ui/button";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+} from "@/components/ui/sidebar";
+import { useUser } from "@/contexts/UserContext";
+import Link from "next/link";
+import { NavMain } from "./nav-main";
+// import { NavUser } from "./nav-user";
+
+const data = {
+  adminNavItem: [
+    {
+      title: "Dashboard",
+      url: "/admin",
+      icon: SquareTerminal,
+      isActive: true,
+    },
+    {
+      title: "Manage",
+      url: "/admin",
+      icon: Bot,
+      items: [
+        {
+          title: "Manage Products",
+          url: "/admin/medicines",
+        },
+        {
+          title: "Manage Users",
+          url: "/admin/users",
+        },
+        {
+          title: "Manage Orders",
+          url: "/admin/orders",
+        },
+      ],
+    },
+
+    {
+      title: "Settings",
+      url: "/update-user",
+      icon: Settings,
+      items: [
+        {
+          title: "Profile",
+          url: "/profile",
+        },
+        {
+          title: "Update Profile",
+          url: "/update-user",
+        },
+      ],
+    },
+  ],
+  // customer nav items
+  //Akbar Shanto vai ekhane customer er jonne nav items add korben
+  customerNavItem: [
+    {
+      title: "Dashboard",
+      url: "/customer",
+      icon: SquareTerminal,
+      isActive: true,
+    },
+    {
+      title: "Manage",
+      url: "/customer",
+      icon: Bot,
+      items: [
+        {
+          title: "Manage Products",
+          url: "//medicines",
+        },
+        {
+          title: "Manage Users",
+          url: "/admin/users",
+        },
+        {
+          title: "Manage Orders",
+          url: "/admin/orders",
+        },
+      ],
+    },
+    //ekhane change kora lagbe na eta common rekhechi
+    {
+      title: "Settings",
+      url: "/update-user",
+      icon: Settings,
+      items: [
+        {
+          title: "Profile",
+          url: "/profile",
+        },
+        {
+          title: "Update Profile",
+          url: "/update-user",
+        },
+      ],
+    },
+  ],
+};
+
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { user, isLoading } = useUser();
+  if (isLoading) {
+    return <div className="">Loading...</div>;
+  }
+  return (
+    <Sidebar collapsible="icon" {...props}>
+      <SidebarHeader>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton size="lg" asChild>
+              {user?.role === "admin" ? (
+                <Link href="/">
+                  <div className="flex items-center justify-center">
+                    <Logo />
+                  </div>
+                  {/* <div className="grid flex-1 text-left text-sm leading-tight">
+   <h2 className="font-bold text-xl">MediMart</h2>
+ </div> */}
+                </Link>
+              ) : (
+                <Link href="/customer">
+                  <div className="flex items-center justify-center">
+                    <Logo />
+                  </div>
+                  {/* <div className="grid flex-1 text-left text-sm leading-tight">
+   <h2 className="font-bold text-xl">MediMart</h2>
+ </div> */}
+                </Link>
+              )}
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
+      <SidebarContent>
+        {
+          <NavMain
+            items={
+              user?.role === "admin" ? data.adminNavItem : data.customerNavItem
+            }
+          />
+        }
+      </SidebarContent>
+      <SidebarFooter>
+        {/* <NavUser /> */}
+        <Button>
+          <Link href="/">Back To Home</Link>
+        </Button>
+      </SidebarFooter>
+    </Sidebar>
+  );
+}
