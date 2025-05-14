@@ -31,18 +31,16 @@ const CustomButton: React.FC<CustomButtonProps> = ({
       type={type} // the `type` prop here
       disabled={disabled}
       className={clsx(
-        "relative inline-flex items-center justify-center px-8 py-3.5 overflow-hidden font-mono dark:bg-slate-800 tracking-tighter text-white bg-blue-600 rounded-lg group hover:cursor-pointer  active:scale-95 active:shadow-inner",
+       "cursor-pointer transition-all bg-blue-500 text-white px-6 py-2 rounded-lg border-blue-600 border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]",
         disabled && "opacity-50 cursor-not-allowed",
         className,
       )}
     >
-      <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-primary rounded-full group-hover:w-full group-hover:h-56"></span>
-      <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-90 bg-gradient-to-b from-transparent via-transparent to-purple-400"></span>
-
+     
       {/* text name */}
-      <span className="relative text-text dark:text-slate-200 group-hover:text-white">
+ 
         {textName}
-      </span>
+   
     </button>
   );
 };

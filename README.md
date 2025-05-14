@@ -6,7 +6,7 @@ MediMart is an online medicine e-commerce platform built with modern technologie
 
 - 🔐 **Secure Authentication** – JWT-based login system using email or phone with bcrypt hashing.
 - 💊 **Advanced Medicine Search** – Search medicines by name, category, or symptoms with detailed pages.
-- 🛒 **Cart & Checkout System** – Add/remove items, upload prescriptions, make secure payments, and select shipping options.
+- 🛒 **Cart & Checkout System** – Add/remove items, upload prescriptions, make secure payments through  SSLCOMMERZ, and select shipping options.
 - 🧑‍💼 **Admin Dashboard** – Manage medicines, users, inventory, orders, and view transactions.
 - 📱 **Responsive UI** – Tailwind CSS-based design optimized for mobile and desktop.
 
@@ -15,8 +15,9 @@ MediMart is an online medicine e-commerce platform built with modern technologie
 - **Framework:** Next.js, React, TypeScript
 - **State Management:** Redux Toolkit
 - **Styling:** Tailwind CSS
-- **Form Handling:** React Hook Form, Yup
+- **Form Handling:** React Hook Form
 - **Authentication:** JWT, bcryptjs
+- **Payment:** SSLCOMMERZ
 
 
 ## 🛠️ Getting Started

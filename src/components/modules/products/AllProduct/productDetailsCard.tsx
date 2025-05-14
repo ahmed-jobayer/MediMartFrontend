@@ -111,16 +111,12 @@ const ProductDetails = async ({ medicine }: { medicine: TMedicine }) => {
             <p>
               <strong>Manufacturer:</strong> {medicine?.manufacturerDetails}
             </p>
-          </div>
+          </div> 
 
           {/* Action Buttons */}
           <div className="flex gap-4 mt-4">
-              <BuyNow medicine={medicine}/>
-            {/* <Button variant="outline" className="flex items-center gap-2">
-              <ShoppingCart className="w-5 h-5" />
-              Add to Cart
-            </Button> */}
             <AddToCartButton medicine={medicine} />
+              <BuyNow medicine={medicine}/>
           </div>
         </div>
       </div>

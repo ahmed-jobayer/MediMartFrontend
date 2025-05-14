@@ -44,7 +44,7 @@ const FeaturedSection = () => {
           <Loading />
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-3">
           {products
             ?.sort((a: any, b: any) => {
               // First, prioritize in-stock items
@@ -54,7 +54,7 @@ const FeaturedSection = () => {
               // Then sort by price (high to low)
               return b.price - a.price;
             }) // high to low
-            ?.slice(0, 6) // just first 6 items from the response
+            ?.slice(0, 8) // just first 6 items from the response
             .map((medicine, index) => (
               <ProductCard
                 key={`${medicine._id}-${index}`}

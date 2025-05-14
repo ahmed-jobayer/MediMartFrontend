@@ -1,10 +1,10 @@
 'use client';
 
-import { Button } from "@/components/ui/button";
 import { useAppDispatch } from "@/redux/hooks";
 import { ShoppingCart } from "lucide-react";
 import { TMedicine } from "@/types";
 import { addProduct } from "@/redux/features/cartSlice";
+import CustomButton from "./CustomButton";
 
 const AddToCartButton = ({ medicine }: { medicine: TMedicine }) => {
   const dispatch = useAppDispatch();
@@ -14,10 +14,16 @@ const AddToCartButton = ({ medicine }: { medicine: TMedicine }) => {
   };
 
   return (
-    <Button onClick={handleClick} variant="outline" className="flex items-center gap-2">
-      <ShoppingCart className="w-5 h-5" />
-      Add to Cart
-    </Button>
+    <CustomButton
+          className="!text-blue-500 bg-white border"
+            handleAnything={() => handleClick()}
+            textName={
+              <div className="flex gap-1 justify-content-center items-center ">
+                <ShoppingCart />
+                Add to Cart
+              </div>
+            }
+          />
   );
 };
 
