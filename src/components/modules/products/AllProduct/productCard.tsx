@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 
 const ProductCard = ({ medicine }: { medicine: TMedicine }) => {
   const path = usePathname();
-  console.log(path);
+  // console.log(path);
 
   return (
     <div className="">

@@ -13,7 +13,7 @@ const CartPage = () => {
   const handleClearCart = () => {
     dispatch(resetCart());
   };
-
+ 
   return (
     <div className=" flex flex-col lg:grid grid-cols-12 gap-8 my-5 container mx-auto">
       <CartProducts />

@@ -31,12 +31,12 @@ const CartProductCard = ({ product }: { product: CartProduct }) => {
             <span className="text-gray-500">Strength:</span>{" "}
             <span className="font-semibold">{product.strength}</span>
           </p>
-          <p>
+          {/* <p>
             <span className="text-gray-500">Prescription Required:</span>{" "}
             <span className="font-semibold">
               {product.requiredPrescription}
             </span>
-          </p>
+          </p> */}
         </div>
         <hr className="my-1" />
         <div className="flex items-center justify-between">

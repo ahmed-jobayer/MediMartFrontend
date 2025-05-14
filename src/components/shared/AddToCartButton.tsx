@@ -5,12 +5,14 @@ import { ShoppingCart } from "lucide-react";
 import { TMedicine } from "@/types";
 import { addProduct } from "@/redux/features/cartSlice";
 import CustomButton from "./CustomButton";
+import { toast } from "sonner";
 
 const AddToCartButton = ({ medicine }: { medicine: TMedicine }) => {
   const dispatch = useAppDispatch();
 
   const handleClick = () => {
     dispatch(addProduct(medicine));
+    toast("Product added to the Cart")
   };
 
   return (

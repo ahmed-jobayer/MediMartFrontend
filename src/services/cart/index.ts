@@ -5,8 +5,9 @@ import { IPartialOrder } from "@/types/cart";
 import { cookies } from "next/headers";
 
 export const createOrder = async (order: IPartialOrder) => {
+  // console.log(order);
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/create-order`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/orders/create-order`, {
       method: "POST",
       headers: {
         Authorization: (await cookies()).get("accessToken")!.value,
@@ -16,7 +17,7 @@ export const createOrder = async (order: IPartialOrder) => {
     });
 
     return await res.json();
-  } catch (error: any) {
+  } catch (error: any) { 
     return Error(error);
   }
 };

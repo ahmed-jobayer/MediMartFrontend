@@ -79,7 +79,7 @@ const Navbar = () => {
             <DropdownMenu>
               <DropdownMenuTrigger>
                 <Avatar>
-                  <AvatarImage src="https://github.com/shadcn.png" />
+                  <AvatarImage className="cursor-pointer" src="https://github.com/shadcn.png" />
                   <AvatarFallback>User</AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
@@ -88,7 +88,7 @@ const Navbar = () => {
                   {user?.name}{" "}
                   <Badge
                     className={
-                      user?.role === "admin" ? `bg-purple-600` : `bg-blue-600`
+                      user?.role === "admin" ? `bg-purple-600 cursor-pointer` : `cursor-pointer bg-blue-600`
                     }
                   >
                     {user?.role}
@@ -97,11 +97,9 @@ const Navbar = () => {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
                   <Link href={user?.role === "admin" ? `/admin` : `/customer`}>
-                    Profile
+                    Dashboard
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>Dashboard</DropdownMenuItem>
-                <DropdownMenuItem>Shop</DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   className="cursor-pointer"

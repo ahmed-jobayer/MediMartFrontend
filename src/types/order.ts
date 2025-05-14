@@ -1,5 +1,7 @@
 import { IUser } from "./customer";
 
+export type ShippingStatus = "PENDING" | "PROCESSING" | "SHIPPED" | "DELIVERED" | "CANCELLED";
+
 export interface IProductItem {
   _id: string;
   productId: string;
@@ -11,7 +13,7 @@ export interface IOrderDB {
   products: IProductItem[];
   user: IUser;
   totalPrice: number;
-  shippingStatus: "PENDING" | "PROCESSING" | "SHIPPED" | "DELIVERED" | string;
+  shippingStatus: ShippingStatus;
   paymentStatus: "PAID" | "UNPAID" | "REFUNDED" | string;
   transactionId: string;
   isDeleted: boolean;

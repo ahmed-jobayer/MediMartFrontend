@@ -19,12 +19,7 @@ const currencyFormatter = (value: number) =>
     currency: "BDT",
   }).format(value);
  
-// new Intl.NumberFormat("en-BD", {
-//   style: "currency",
-//   currency: "BDT",
-//   currencyDisplay: "symbol", //? You can also try "narrowSymbol"
-//   maximumFractionDigits: 0,  //? Optional: Remove decimals if not needed
-// }).format(value);
+
 
 const PaymentDetails = () => {
   //* redux
@@ -39,12 +34,6 @@ const PaymentDetails = () => {
   //* router
   const router = useRouter();
 
-  //* state for prescription
-  // const [isPrescriptionUploaded, setPrescriptionUploaded] = useState(false);
-
-  // const handlePrescriptionUpload = () => {
-  //   setPrescriptionUploaded(true);
-  // };
 
   const subTotal = cart.medicines.reduce(
     (total: number, product: CartProduct) =>
@@ -55,14 +44,7 @@ const PaymentDetails = () => {
   const shippingCost = !cart.city ? 0 : cart.city === "Dhaka" ? 50 : 300;
   const grandTotal = subTotal + shippingCost;
 
-  // const isOrderDisabled = cart.medicines.some(
-  //   (product) =>
-  //     product.requiredPrescription === "Yes" && !isPrescriptionUploaded
-  // );
 
-  // const anyPrescriptionRequiredItem = cart.medicines.find(
-  //   (product) => product.requiredPrescription === "Yes"
-  // );
 
   //* order handle
   const handleOrder = async () => {
@@ -98,13 +80,15 @@ const PaymentDetails = () => {
 
       //* Perform order submission logic (e.g., sending data to an API)
       const res = await createOrder(orderData);
+      console.log(res);
+
 
       if (res.success) {
         toast.success(res.message, { id: orderLoading });
         //? Once the order is placed, reset the cart
         dispatch(resetCart());
-        toast.success("Order placed successfully!");
-        router.push(res.data.paymentUrl);
+        router.push(res.data.GatewayPageURL);
+        // toast.success("Order placed successfully!");
       }
 
       if (!res.success) {

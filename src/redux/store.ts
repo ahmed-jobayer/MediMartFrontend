@@ -14,7 +14,7 @@ import cartSlice from "./features/cartSlice";
 import storage from "./storage";
 
 const persistOptions = {
-  key: "cart",
+  key: "cart", 
   storage,
 };
 

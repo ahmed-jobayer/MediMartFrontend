@@ -21,6 +21,6 @@ export default function DashboardLayout({
         </header>
         <div className="p-4 pt-0 min-h-screen">{children}</div>
       </SidebarInset>
-    </SidebarProvider>
+    </SidebarProvider> 
   );
 }

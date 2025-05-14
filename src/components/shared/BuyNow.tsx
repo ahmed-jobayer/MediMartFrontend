@@ -20,7 +20,7 @@ const BuyNow = ({ medicine }: { medicine: TMedicine }) => {
     const handleBuyNow= (e: any) =>{    
       e.preventDefault(); //  Prevent <Link> default nav
       e.stopPropagation(); //  Prevents the Link from triggering / event bubbling
-      handleAddProduct(medicine)
+      handleAddProduct(medicine) 
       router.push(`/cart`);
     }
 

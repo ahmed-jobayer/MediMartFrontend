@@ -42,7 +42,7 @@ const data = {
         },
         {
           title: "Manage Orders",
-          url: "/admin/orders",
+          url: "/admin/manage-orders",
         },
       ],
     },
@@ -79,7 +79,7 @@ const data = {
       items: [
         {
           title: "Manage Products",
-          url: "//medicines",
+          url: "/medicines",
         },
         {
           title: "Manage Users",
@@ -87,7 +87,7 @@ const data = {
         },
         {
           title: "Manage Orders",
-          url: "/admin/orders",
+          url: "/admin/manage-orders",
         },
       ],
     },

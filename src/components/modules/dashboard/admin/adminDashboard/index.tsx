@@ -5,7 +5,7 @@ import {
   ChartBarIcon,
   ClipboardListIcon,
   DollarSignIcon,
-  ShoppingBagIcon,
+  ShoppingBagIcon, 
   User,
 } from "lucide-react";
 import Link from "next/link";
@@ -50,7 +50,7 @@ const AdminDashboard = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <LinkCard title="Manage Medicines" href="/admin/medicines" />
-        <LinkCard title="Manage Orders" href="/admin/orders" />
+        <LinkCard title="Manage Orders" href="/admin/manage-orders" />
         <LinkCard title="Manage Users" href="/admin/users" />
       </div>
     </div>

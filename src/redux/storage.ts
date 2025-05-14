@@ -11,7 +11,7 @@ const createNoopStorage = () => {
     removeItem() {
       return Promise.resolve();
     },
-  };
+  }; 
 };
 
 const storage =

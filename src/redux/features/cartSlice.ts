@@ -12,7 +12,7 @@ interface InitialState {
   shippingAddress: string;
 }
 
-//* Load from localStorage
+//* Load from localStorage 
 const loadCartFromLocalStorage = (): InitialState => {
   if (typeof window === "undefined") {
     return {
