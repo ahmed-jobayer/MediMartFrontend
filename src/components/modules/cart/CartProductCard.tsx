@@ -77,3 +77,4 @@ const CartProductCard = ({ product }: { product: CartProduct }) => {
 };
 
 export default CartProductCard;
+ 

@@ -12,7 +12,7 @@ import { setCity, setShippingAddress } from "@/redux/features/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 const Address = () => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch(); 
   const { city, shippingAddress } = useAppSelector((state) => state.cart);
 
   const handleCitySelect = (selectedCity: string) => {

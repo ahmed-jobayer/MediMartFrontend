@@ -139,7 +139,7 @@ export const orderSelector = (state: RootState) => {
 };
 
 export const {
-  addProduct,
+  addProduct, 
   incrementQuantity,
   decrementQuantity,
   removeProduct,

@@ -18,7 +18,7 @@ const currencyFormatter = (value: number) =>
     style: "currency",
     currency: "BDT",
   }).format(value);
-
+ 
 // new Intl.NumberFormat("en-BD", {
 //   style: "currency",
 //   currency: "BDT",
@@ -112,7 +112,7 @@ const PaymentDetails = () => {
       }
     } catch (error: any) {
       toast.error(error.message, { id: orderLoading });
-    }
+    } 
   };
 
   return (
