@@ -1,35 +1,88 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import CustomButton from "@/components/shared/CustomButton";
-import styles from "./HeroSection.module.css";
-import { useRouter } from "next/navigation";
+import { getAllProducts } from "@/services/Product";
+import { useEffect, useState } from "react";
+import { TMedicine } from "@/types";
+import { Carousel } from "antd";
+import Link from "next/link";
+import Loading from "@/components/shared/Loading";
 
 const HeroSection = () => {
-  // navigation
-  const router = useRouter();
+    const [data, setProducts] = useState<TMedicine[]>([]);
+      const [loading, setLoading] = useState(true);
+
+    const fetchFeaturedProducts = async () => {
+      try {
+        const response = await getAllProducts("1", "100", {}); // fetching 100 to filter from
+        console.log(response);
+        const allProducts = response?.data?.result || [];
+  
+        setProducts(allProducts);
+      } catch (error) {
+        console.error("Failed to fetch featured products:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    useEffect(() => {
+      fetchFeaturedProducts();
+    }, []);
+ 
+    console.log(data);
+    if (loading) {
+      return <Loading/>
+    }
 
   return (
-    <div
-      className={`${styles.banner} relative container mx-auto border-2 border-white rounded-3xl mt-10`}
+    <div>
+     <Carousel
+      autoplay={{ dotDuration: true }}
+      autoplaySpeed={2000}
+      arrows={true}
+      fade={true}
+      className="container mx-auto mt-12 min-h-[55vh] bg-gradient-to-r from-blue-500 to-white rounded-4xl"
     >
-      {/* Background Overlay */}
-      <div className="absolute inset-0 z-10 pointer-events-none rounded-3xl h-[500px] opacity-60 bg-gradient-to-r from-indigo-600 via-black to-purple-400"></div>
+      {data &&
+      
+        [...data] // shallow copy to safely sort
+          .sort((a, b) => {
+            // First, prioritize in-stock items
+            if (a.inStock !== b.inStock) {
+              return a.inStock ? -1 : 1; // in-stock (true) comes before out-of-stock (false)
+            }
+            // Then sort by price (high to low)
+            return b.price - a.price;
+          }) // high to low sort
+          .slice(0, 6)
+          .map((d: TMedicine) => (
+            <Link  href={`/shop/${d?._id}`} key={d?._id}>
+              <div className="rounded-4xl ">
+                {/* description */}
+                <header className="flex min-h-[55vh] h-full lg:flex-row flex-col gap-[50px] lg:gap-0 justify-center items-center rounded-4xl">
+                  <div className="px-8 mt-8 sm:h-1/2  lg:mt-0 w-full lg:w-[50%] text-center text-black">
+                    <h1 className="text-[40px] lg:text-[60px] leading-[45px] lg:leading-[65px] font-[500]">
+                      {d?.name}
+                    </h1>
+                    <p className="text-[16px] mt-2">{d?.description}</p>
+                  </div>
 
-      {/* Foreground Content */}
-      <div className="z-20 relative flex flex-col items-center justify-center text-center px-6 py-20 md:py-32">
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 drop-shadow-lg">
-          Welcome to <span className="text-pink-400">Medi</span>
-          <span className="text-blue-500">Mart</span>
-        </h1>
-        <p className="text-lg md:text-xl text-white drop-shadow-lg font-semibold max-w-2xl mb-10">
-          Your one-stop destination for affordable and trusted medical products
-          delivered with care.
-        </p>
-        <CustomButton
-          textName="Shop Now"
-          handleAnything={() => router.push("/shop")}
-        />
-      </div>
+                  {/* image */}
+                  <div className="w-full lg:w-[50%] p-10 flex justify-center items-center rounded-4xl">
+                    <img
+                      src={d?.Img as string }
+                      alt="image"
+                      // width={192}
+                      // height={192}
+                      className="w-48 h-48 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-full"
+                    />
+                  </div>
+                </header>
+              </div>
+            </Link>
+          ))}
+    </Carousel>
     </div>
   );
 };

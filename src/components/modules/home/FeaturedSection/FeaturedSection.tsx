@@ -6,7 +6,7 @@ import { TMedicine } from "@/types";
 import { useEffect, useState } from "react";
 import ProductCard from "../../products/AllProduct/productCard";
 import { getAllProducts } from "@/services/Product";
-
+ 
 const FeaturedSection = () => {
   const [products, setProducts] = useState<TMedicine[]>([]);
   const [loading, setLoading] = useState(true);
@@ -27,6 +27,8 @@ const FeaturedSection = () => {
   useEffect(() => {
     fetchFeaturedProducts();
   }, []);
+
+  // console.log(products);
 
   return (
     <section className="py-12 container mx-auto px-4 md:px-0">
