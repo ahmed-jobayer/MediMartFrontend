@@ -7,7 +7,7 @@ export const getAllProducts = async (
   limit: string,
   filters: Record<string, any>
 ) => {
-  try {
+  try { 
     // Initialize query parameters
     const queryParams = new URLSearchParams();
 

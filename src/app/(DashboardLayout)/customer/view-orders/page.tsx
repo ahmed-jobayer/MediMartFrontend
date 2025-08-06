@@ -60,6 +60,8 @@ const ViewOrders = () => {
       </div>
     );
   }
+const users = orders.map(order=> order.user)
+console.log(users);
 
   //* Calculate pagination
   const startIndex = (page - 1) * limit;

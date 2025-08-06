@@ -5,7 +5,6 @@ import { getAllProducts } from '@/services/Product';
 import { TMedicine } from '@/types';
 import { IOrderDB } from '@/types/order';
 import { ChartBarIcon, ClipboardListIcon, DollarSignIcon, ShoppingBagIcon } from 'lucide-react';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 const CustomerPage = () => {
@@ -74,12 +73,6 @@ const CustomerPage = () => {
              color="from-blue-500 to-cyan-500"
            />
          </div>
-   
-         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-           <LinkCard title="Manage Medicines" href="/admin/medicines" />
-           <LinkCard title="Manage Orders" href="/admin/manage-orders" />
-           <LinkCard title="Manage Users" href="/admin/users" />
-         </div>
        </div>
      );
    };
@@ -106,13 +99,6 @@ const CustomerPage = () => {
      </div>
    );
    
-   const LinkCard = ({ title, href }: { title: string; href: string }) => (
-     <Link href={href}>
-       <div className="bg-white border border-gray-200 shadow-md hover:shadow-xl hover:scale-[1.02] transition-all p-6 rounded-xl cursor-pointer">
-         <h3 className="text-xl font-semibold text-gray-800">{title}</h3>
-         <p className="text-sm text-gray-500 mt-1">Click to manage</p>
-       </div>
-     </Link>
-   );
+
 
 export default CustomerPage; 
